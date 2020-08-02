@@ -1,0 +1,18 @@
+# Every field in a theme file is optional.
+
+shadow = false
+borders = "simple"
+
+[colors]
+background = "black"
+view       = "black"
+
+primary   = "white"
+secondary = "light black"
+tertiary  = "red"
+
+title_primary   = "red"
+title_secondary = "white"
+
+highlight          = "light black"
+highlight_inactive = "light black"
