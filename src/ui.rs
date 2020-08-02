@@ -1,4 +1,4 @@
-use crate::dice_ui::*;
+use crate::dice::ui::RollDiceDialog;
 use crate::state;
 use cursive::theme::*;
 use cursive::traits::*;
@@ -123,17 +123,19 @@ fn build_root() -> impl View {
 
 fn show_notes_dialog(cursive: &mut Cursive, tx: &mpsc::Sender<ControllerMessage>) {
     let tx = tx.clone();
-    let dialog = build_input_dialog("Notes", None,
-        move |cursive, text| {
-            tx.send(ControllerMessage::AddNote(text.to_string()))
-                .unwrap();
-            cursive.pop_layer();
-        }
-    );
+    let dialog = build_input_dialog("Notes", None, move |cursive, text| {
+        tx.send(ControllerMessage::AddNote(text.to_string()))
+            .unwrap();
+        cursive.pop_layer();
+    });
     cursive.add_layer(dialog);
 }
 
-pub fn build_input_dialog<F>(title: impl Into<String>, message: Option<String>, on_submit: F) -> impl View
+pub fn build_input_dialog<F>(
+    title: impl Into<String>,
+    message: Option<String>,
+    on_submit: F,
+) -> impl View
 where
     F: 'static + Clone + Fn(&mut Cursive, &str),
 {

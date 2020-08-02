@@ -1,7 +1,4 @@
-#![feature(trait_alias)]
-
 mod dice;
-mod dice_ui;
 mod state;
 mod ui;
 mod utils;

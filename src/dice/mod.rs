@@ -1,3 +1,5 @@
+pub mod ui;
+
 use crate::utils::*;
 use rand::Rng;
 use std::iter::Peekable;
